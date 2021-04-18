@@ -29,6 +29,7 @@ export default class BookingRoom extends Component {
     window.localStorage.removeItem('name');
     window.location.href = "http://localhost:3000/bookingroom";
   }
+
   render(){
     return (
       <div className = "container">
@@ -52,13 +53,13 @@ export default class BookingRoom extends Component {
         <Col md={6}>
           <FormGroup>
             <Label >Khung Giờ</Label>
-            <Input type="time"   placeholder="nhập giờ" />
+            <Input type="number"   placeholder="nhập giờ" min= '1'/>
           </FormGroup>
         </Col>
         <Col md={6}>
         <FormGroup style={{float : 'right'}}>
         <Label>Phòng</Label>
-        <Input type="text" disabled  placeholder="Mã giảm giá" value={localStorage.getItem('name')}/>
+        <Input type="text" disabled  placeholder="Rooms" value={localStorage.getItem('name')}/>
       </FormGroup>
         </Col>
       </Row>
@@ -79,7 +80,7 @@ export default class BookingRoom extends Component {
         </Col>
         <Col md={4}>
           <FormGroup>
-            <Label>Ngày Trả Phòng Dự Kiến</Label>
+            <Label>Tổng thời gian thuê</Label>
             <Input type="date" />
           </FormGroup>
         </Col>
