@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { Link } from "react-router-dom";
 import axios from "axios";
-import Combobox from "../components/Combobox";
 
 export default class BookingRoom extends Component {
   constructor(props) {
@@ -64,8 +63,8 @@ export default class BookingRoom extends Component {
         </Col>
       </Row>
       <FormGroup style={{float : 'right'}}>
-        <Label>Mã Giảm Giá</Label>
-        <Input type="text"  placeholder="Mã giảm giá"/>
+        <Label>Combo</Label>
+        <Input type="text"  placeholder="Combo"/>
       </FormGroup>
       <FormGroup>
         <Label>Ghi Chú</Label>
