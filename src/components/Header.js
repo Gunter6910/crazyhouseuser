@@ -29,7 +29,7 @@ class Header extends Component {
                         <Link to="/">Trang Chủ</Link>
                       </li>
                       <li>
-                        <Link to="/bookingroom">Booking Room</Link>
+                        <Link to="/">Booking Room</Link>
                         <ul className="dropdown">
                           <li>
                             <Link to="/roombig">Phòng Đập Phá Lớn</Link>

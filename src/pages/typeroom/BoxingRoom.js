@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import PageCount from '../../components/PageCount';
 import { Button } from "reactstrap";
 class BoxingRoom extends Component {
   state = {
@@ -100,18 +101,7 @@ class BoxingRoom extends Component {
                     ))}
                   </div>
                 </div>
-                <div class="product__pagination">
-                <Link href="#" class="current-page">
-                    1
-                  </Link>
-                  <Link href="#">2</Link>
-                  <Link href="#">3</Link>
-                  <Link href="#">4</Link>
-                  <Link href="#">5</Link>
-                  <Link href="#">
-                    <i class="fa fa-angle-double-right"></i>
-                  </Link>
-                </div>
+                <PageCount/>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-8">
                 <div class="product__sidebar">

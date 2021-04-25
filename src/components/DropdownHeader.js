@@ -10,7 +10,10 @@ function DropdownHeader (props){
 
   const toggle = () => setDropdownOpen(prevState => !prevState);
 
-  const logout = () => window.localStorage.clear();
+  const logout = () => {
+
+    window.localStorage.clear();
+  }
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} style ={{float: 'right', top:'-5px' }} >
       <DropdownToggle>
@@ -18,12 +21,10 @@ function DropdownHeader (props){
       <FontAwesomeIcon icon={faSortDown} />
       </DropdownToggle>
       <DropdownMenu>
-        <DropdownItem header>User Option</DropdownItem>
-        <DropdownItem><Link to="/login" style={{color:'#212529'}}>Login</Link></DropdownItem>
-        <DropdownItem onClick = {logout}>Logout</DropdownItem>
+        <DropdownItem><Link to="/login" style={{color:'#212529'}}>Đăng Nhập</Link></DropdownItem>
+        <DropdownItem onClick = {logout} ><Link to="/login" style={{color:'#212529'}}>Đăng xuất</Link></DropdownItem>
         <DropdownItem divider />
-        <DropdownItem ><Link to="/bookingroom" style={{color:'#212529'}}>Booking Room Details</Link></DropdownItem>
-        <DropdownItem>About Us</DropdownItem>
+        <DropdownItem ><Link to="/bookingroom" style={{color:'#212529'}}>Chi Tiết Đặt Phòng</Link></DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
+import PageCount from '../components/PageCount';
 class Product extends Component {
   constructor(props) {
     super(props);
@@ -92,7 +93,7 @@ class Product extends Component {
                   <div className="row">
                     <div className="col-lg-8 col-md-8 col-sm-8">
                       <div className="section-title">
-                        <h4>Live Action</h4>
+                        <h4>Phòng Nổi Bật</h4>
                       </div>
                     </div>
                     <div className="col-lg-4 col-md-4 col-sm-4">
@@ -139,18 +140,8 @@ class Product extends Component {
                     ))}
                   </div>
                 </div>
-                <div class="product__pagination">
-                  <Link href="#" class="current-page">
-                    1
-                  </Link>
-                  <Link href="#">2</Link>
-                  <Link href="#">3</Link>
-                  <Link href="#">4</Link>
-                  <Link href="#">5</Link>
-                  <Link href="#">
-                    <i class="fa fa-angle-double-right"></i>
-                  </Link>
-                </div>
+
+                <PageCount/>
               </div>
               <div className="col-lg-4 col-md-6 col-sm-8">
                 <div className="product__sidebar">

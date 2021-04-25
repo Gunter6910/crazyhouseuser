@@ -73,8 +73,8 @@ class Login extends Component {
             <div className="row">
               <div className="col-lg-12 text-center">
                 <div className="normal__breadcrumb__text">
-                  <h2>Login</h2>
-                  <p>Welcome to the official Crazy House</p>
+                  <h2>Đăng Nhập</h2>
+                  <p>Chào Mừng đến với trang Web đặt phòng giải trí Crazy House</p>
                 </div>
               </div>
             </div>
@@ -88,7 +88,7 @@ class Login extends Component {
             <div className="row">
               <div className="col-lg-6">
                 <div className="login__form">
-                  <h3>Login</h3>
+                  <h3>Đăng Nhập</h3>
                   <form onSubmit={this.handleSubmit}>
                     <div className="input__item">
                       <input
@@ -113,19 +113,19 @@ class Login extends Component {
                       className="site-btn"
                     
                     >
-                      Login Now
+                      Đăng Nhập Ngay
                     </button>
                   </form>
                   <a href="#" className="forget_pass">
-                    Forgot Your Password?
+                    Quên Mật Khẩu?
                   </a>
                 </div>
               </div>
               <div className="col-lg-6">
                 <div className="login__register">
-                  <h3>Dont’t Have An Account?</h3>
+                  <h3>Bạn Chưa Có Tài Khoản?</h3>
                   <a href="#" className="primary-btn">
-                    Register Now
+                    Hãy Đăng Kí Ngay!!!
                   </a>
                 </div>
               </div>

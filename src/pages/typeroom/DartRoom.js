@@ -2,7 +2,27 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
+import axios from "axios";
+import PageCount from '../../components/PageCount';
 class DartRoom extends Component {
+  state = {
+    products: [],
+  };
+
+  componentDidMount() {
+    axios
+      .get("http://localhost:8080/api/room/rooms", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: window.localStorage.getItem("accessToken"),
+        },
+      })
+      .then((res) => {
+        const products = res.data;
+        this.setState({ products });
+      });
+  }
   render() {
     return (
       <div>
@@ -48,6 +68,7 @@ class DartRoom extends Component {
                     </div>
                   </div>
                   <div class="row">
+                  {this.state.products.map((products) => (
                     <div class="col-lg-4 col-md-6 col-sm-6">
                       <div class="product__item">
                         <div
@@ -55,12 +76,15 @@ class DartRoom extends Component {
                           data-setbg="assets/img/popular/popular-1.jpg"
                         >
                           <img
-                            src="assets/img/popular/popular-1.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
+                              src={"assets/img/hero/" + products.image}
+                              alt="no logo"
+                              height="324px"
+                              width="230px"
+                            />
+                         <div className="ep">Size Room: {products.size}</div>
+                            <Button color="danger" className="btn_addtocart">
+                              Đặt Phòng
+                            </Button>
                         </div>
 
                         <div class="product__item__text">
@@ -74,456 +98,13 @@ class DartRoom extends Component {
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/popular/popular-2.jpg"
-                        >
-                          <img
-                            src="assets/img/popular/popular-2.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Kizumonogatari III: Reiket su-hen</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/popular/popular-3.jpg"
-                        >
-                          <img
-                            src="assets/img/popular/popular-3.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Shirogane Tamashii hen Kouhan sen</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/popular/popular-4.jpg"
-                        >
-                          <img
-                            src="assets/img/popular/popular-4.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">
-                              Rurouni Kenshin: Meiji Kenkaku Romantan
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/popular/popular-5.jpg"
-                        >
-                          <img
-                            src="assets/img/popular/popular-5.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Mushishi Zoku Shou 2nd Season</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/popular/popular-6.jpg"
-                        >
-                          <img
-                            src="assets/img/popular/popular-6.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Monogatari Series: Second Season</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/recent/recent-1.jpg"
-                        >
-                          <img
-                            src="assets/img/recent/recent-1.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Great Teacher Onizuka</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/recent/recent-2.jpg"
-                        >
-                          <img
-                            src="assets/img/recent/recent-2.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">
-                              Fate/stay night Movie: Heaven's Feel - II. Lost
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/recent/recent-3.jpg"
-                        >
-                          <img
-                            src="assets/img/recent/recent-3.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Mushishi Zoku Shou: Suzu no Shizuku</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/recent/recent-4.jpg"
-                        >
-                          <img
-                            src="assets/img/recent/recent-4.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Fate/Zero 2nd Season</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/recent/recent-5.jpg"
-                        >
-                          <img
-                            src="assets/img/recent/recent-5.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Kizumonogatari II: Nekket su-hen</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/recent/recent-6.jpg"
-                        >
-                          <img
-                            src="assets/img/recent/recent-6.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">
-                              The Seven Deadly Sins: Wrath of the Gods
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/trending/trend-1.jpg"
-                        >
-                          <img
-                            src="assets/img/trending/trend-1.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">
-                              The Seven Deadly Sins: Wrath of the Gods
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="img/trending/trend-2.jpg"
-                        >
-                          <img
-                            src="assets/img/trending/trend-1.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">
-                              Gintama Movie 2: Kanketsu-hen - Yorozuya yo Eien
-                            </a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="img/trending/trend-3.jpg"
-                        >
-                          <img
-                            src="assets/img/trending/trend-1.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Shingeki no Kyojin Season 3 Part 2</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="img/trending/trend-4.jpg"
-                        >
-                          <img
-                            src="assets/img/trending/trend-4.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Fullmetal Alchemist: Brotherhood</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="img/trending/trend-5.jpg"
-                        >
-                          <img
-                            src="assets/img/trending/trend-5.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Shiratorizawa Gakuen Koukou</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="img/trending/trend-6.jpg"
-                        >
-                          <img
-                            src="assets/img/trending/trend-6.jpg"
-                            alt="no logo"
-                          />
-                          <Button color="danger" className="btn_addtocart">
-                            Đặt Phòng
-                          </Button>{" "}
-                        </div>
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Active</li>
-                            <li>Movie</li>
-                          </ul>
-                          <h5>
-                            <a href="#">Code Geass: Hangyaku no Lelouch R2</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
+                  ))}               
                   </div>
                 </div>
-                <div class="product__pagination">
-                  <a href="#" class="current-page">
-                    1
-                  </a>
-                  <a href="#">2</a>
-                  <a href="#">3</a>
-                  <a href="#">4</a>
-                  <a href="#">5</a>
-                  <a href="#">
-                    <i class="fa fa-angle-double-right"></i>
-                  </a>
-                </div>
+                <PageCount />
               </div>
+
+
               <div class="col-lg-4 col-md-6 col-sm-8">
                 <div class="product__sidebar">
                   <div class="product__sidebar__view">
@@ -538,139 +119,62 @@ class DartRoom extends Component {
                       <li data-filter=".month">Month</li>
                       <li data-filter=".years">Years</li>
                     </ul>
+
+
                     <div class="filter__gallery">
+                    {this.state.products.map((products) => (
                       <div
                         class="product__sidebar__view__item set-bg mix day years"
                         data-setbg="img/sidebar/tv-1.jpg"
                       >
-                        <img src="assets/img/sidebar/tv-1.jpg" alt="no logo" />
-
-                        <h5>
-                          <a href="#">Boruto: Naruto next generations</a>
-                        </h5>
+                       <img
+                            src={"assets/img/hero/" + products.image}
+                            alt=""
+                            width="350px"
+                            height="190px"
+                          />
+                          <div className="ep">Room size: {products.size}</div>
+                          <h5>
+                            <Link style={{ color: "white" }}>
+                              {products.name}
+                            </Link>
+                          </h5>
                       </div>
-                      <div
-                        class="product__sidebar__view__item set-bg mix month week"
-                        data-setbg="img/sidebar/tv-2.jpg"
-                      >
-                        <img src="assets/img/sidebar/tv-2.jpg" alt="no logo" />
-
-                        <h5>
-                          <a href="#">
-                            The Seven Deadly Sins: Wrath of the Gods
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        class="product__sidebar__view__item set-bg mix week years"
-                        data-setbg="img/sidebar/tv-3.jpg"
-                      >
-                        <img src="assets/img/sidebar/tv-3.jpg" alt="no logo" />
-
-                        <h5>
-                          <a href="#">
-                            Sword art online alicization war of underworld
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        class="product__sidebar__view__item set-bg mix years month"
-                        data-setbg="img/sidebar/tv-4.jpg"
-                      >
-                        <img src="assets/img/sidebar/tv-4.jpg" alt="no logo" />
-
-                        <h5>
-                          <a href="#">
-                            Fate/stay night: Heaven's Feel I. presage flower
-                          </a>
-                        </h5>
-                      </div>
-                      <div
-                        class="product__sidebar__view__item set-bg mix day"
-                        data-setbg="img/sidebar/tv-5.jpg"
-                      >
-                        <img src="assets/img/sidebar/tv-5.jpg" alt="no logo" />
-
-                        <h5>
-                          <a href="#">Fate stay night unlimited blade works</a>
-                        </h5>
-                      </div>
+                    ))}
                     </div>
                   </div>
+
+
                   <div class="product__sidebar__comment">
                     <div class="section-title">
                       <h5>New Comment</h5>
                     </div>
+                    {this.state.products.map((products) => (
                     <div class="product__sidebar__comment__item">
                       <div class="product__sidebar__comment__item__pic">
-                        <img src="assets/img/sidebar/comment-1.jpg" alt="" />
+                      <img
+                            src={"assets/img/hero/" + products.image}
+                            alt=""
+                            width="90px"
+                            height="130px"
+                          />
                       </div>
                       <div class="product__sidebar__comment__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
+                      <ul>
+                            <li>Sale</li>
+                            <li>Booking</li>
+                          </ul>
                         <h5>
-                          <a href="#">
-                            The Seven Deadly Sins: Wrath of the Gods
-                          </a>
-                        </h5>
+                            <Link style={{ color: "white" }}>
+                              {products.name}
+                            </Link>
+                          </h5>
                         <span>
                           <i class="fa fa-eye"></i> 19.141 Viewes
                         </span>
                       </div>
                     </div>
-                    <div class="product__sidebar__comment__item">
-                      <div class="product__sidebar__comment__item__pic">
-                        <img src="assets/img/sidebar/comment-2.jpg" alt="" />
-                      </div>
-                      <div class="product__sidebar__comment__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5>
-                          <a href="#">Shirogane Tamashii hen Kouhan sen</a>
-                        </h5>
-                        <span>
-                          <i class="fa fa-eye"></i> 19.141 Viewes
-                        </span>
-                      </div>
-                    </div>
-                    <div class="product__sidebar__comment__item">
-                      <div class="product__sidebar__comment__item__pic">
-                        <img src="assets/img/sidebar/comment-3.jpg" alt="" />
-                      </div>
-                      <div class="product__sidebar__comment__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5>
-                          <a href="#">Kizumonogatari III: Reiket su-hen</a>
-                        </h5>
-                        <span>
-                          <i class="fa fa-eye"></i> 19.141 Viewes
-                        </span>
-                      </div>
-                    </div>
-                    <div class="product__sidebar__comment__item">
-                      <div class="product__sidebar__comment__item__pic">
-                        <img src="assets/img/sidebar/comment-4.jpg" alt="" />
-                      </div>
-                      <div class="product__sidebar__comment__item__text">
-                        <ul>
-                          <li>Active</li>
-                          <li>Movie</li>
-                        </ul>
-                        <h5>
-                          <a href="#">Monogatari Series: Second Season</a>
-                        </h5>
-                        <span>
-                          <i class="fa fa-eye"></i> 19.141 Viewes
-                        </span>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
