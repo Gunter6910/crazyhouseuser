@@ -23,20 +23,16 @@ class Login extends Component {
   handlePass = (event) => {
     this.setState({ password: event.target.value });
   };
-
   handleSubmit(event) {
     const { email, password } = this.state;
-   
-    
+
     axios
       .post(
         "http://localhost:8080/api/login",
-        { 
-          
+        {
           email: email,
           password: password,
-      
-      },
+        },
         {
           headers: {
             accept: "*/*",
@@ -46,13 +42,12 @@ class Login extends Component {
         { withCredentials: true }
       )
       .then((response) => {
-        
-        localStorage.setItem('fullName', response.data.fullName);
-        localStorage.setItem('accessToken', response.data.accessToken);
+        localStorage.setItem("fullName", response.data.fullName);
+        localStorage.setItem("id", response.data.userid);
+        localStorage.setItem("accessToken", response.data.accessToken);
         if (response.data) {
-          window.location.href = "http://localhost:3000"
+          window.location.href = "http://localhost:3000";
         }
-        
       })
       .catch((error) => {
         console.log("login error", error);
@@ -74,7 +69,9 @@ class Login extends Component {
               <div className="col-lg-12 text-center">
                 <div className="normal__breadcrumb__text">
                   <h2>Đăng Nhập</h2>
-                  <p>Chào Mừng đến với trang Web đặt phòng giải trí Crazy House</p>
+                  <p>
+                    Chào Mừng đến với trang Web đặt phòng giải trí Crazy House
+                  </p>
                 </div>
               </div>
             </div>
@@ -94,25 +91,22 @@ class Login extends Component {
                       <input
                         type="email"
                         placeholder="Email address"
-                        value = {this.state.email}
+                        value={this.state.email}
                         onChange={this.handleChange}
-                       required/>
+                        required
+                      />
                       <span className="icon_mail"></span>
                     </div>
                     <div className="input__item">
                       <input
                         type="password"
                         placeholder="Password"
-                        value = {this.state.password}
+                        value={this.state.password}
                         onChange={this.handlePass}
                       />
                       <span className="icon_lock"></span>
                     </div>
-                    <button
-                      type="submit"
-                      className="site-btn"
-                    
-                    >
+                    <button type="submit" className="site-btn">
                       Đăng Nhập Ngay
                     </button>
                   </form>

@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-import PageCount from '../components/PageCount';
+import Pagination from "../components/Pagination";
+
 class Product extends Component {
   constructor(props) {
     super(props);
-  this.state = {
-    products: [],
-  };
+    this.state = {
+      products: [],
+    };
   }
   componentDidMount() {
     axios
@@ -23,12 +24,14 @@ class Product extends Component {
         const products = res.data;
         console.log(products);
         this.setState({ products });
-        
       });
   }
-  handleBooking(){
-    window.location.href = "http://localhost:3000/bookingroom"
-  }
+
+  handleBooking = (id, name) => {
+    const url = "http://localhost:3000/bookingroom?id=" + id + "&name=" + name;
+    window.location.href = url;
+  };
+
   render() {
     return (
       <div>
@@ -61,25 +64,30 @@ class Product extends Component {
                           <div
                             className="product__item__pic set-bg"
                             data-setbg={"assets/img/hero/" + products.image}
-                            
                           >
                             <img
                               src={"assets/img/hero/" + products.image}
                               alt="no logo"
                               height="324px"
                               width="230px"
-                              {...localStorage.setItem('image', products.image)}/>
+                            />
                             <div className="ep">Size Room: {products.size}</div>
-                            <Button color="danger" className="btn_addtocart" onClick={this.handleBooking}>
+                            <Button
+                              color="danger"
+                              className="btn_addtocart"
+                              onClick={() =>
+                                this.handleBooking(products.id, products.name)
+                              }
+                            >
                               Đặt Phòng
-                            </Button>{" "}
+                            </Button>
                           </div>
                           <div className="product__item__text">
                             <ul>
                               <li>Hot Booking</li>
                               <li>Sale off 50%</li>
                             </ul>
-                            <Link style={{ color: "white" }} {...localStorage.setItem('name', products.name)}>
+                            <Link style={{ color: "white" }}>
                               {products.name}
                             </Link>
                           </div>
@@ -141,7 +149,7 @@ class Product extends Component {
                   </div>
                 </div>
 
-                <PageCount/>
+                <Pagination />
               </div>
               <div className="col-lg-4 col-md-6 col-sm-8">
                 <div className="product__sidebar">

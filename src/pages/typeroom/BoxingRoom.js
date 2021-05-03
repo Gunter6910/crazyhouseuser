@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import PageCount from '../../components/PageCount';
+import Pagination from '../../components/Pagination';
 import { Button } from "reactstrap";
 class BoxingRoom extends Component {
   state = {
@@ -101,7 +101,7 @@ class BoxingRoom extends Component {
                     ))}
                   </div>
                 </div>
-                <PageCount/>
+                <Pagination/>
               </div>
               <div class="col-lg-4 col-md-6 col-sm-8">
                 <div class="product__sidebar">

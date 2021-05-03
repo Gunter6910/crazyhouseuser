@@ -24,7 +24,7 @@ function DropdownHeader (props){
         <DropdownItem><Link to="/login" style={{color:'#212529'}}>Đăng Nhập</Link></DropdownItem>
         <DropdownItem onClick = {logout} ><Link to="/login" style={{color:'#212529'}}>Đăng xuất</Link></DropdownItem>
         <DropdownItem divider />
-        <DropdownItem ><Link to="/bookingroom" style={{color:'#212529'}}>Chi Tiết Đặt Phòng</Link></DropdownItem>
+        <DropdownItem ><Link to="/lichsu" style={{color:'#212529'}}>Chi Tiết Đặt Phòng</Link></DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

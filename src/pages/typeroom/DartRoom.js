@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import axios from "axios";
-import PageCount from '../../components/PageCount';
+import Pagination from "../../components/Pagination";
 class DartRoom extends Component {
   state = {
     products: [],
@@ -68,42 +68,41 @@ class DartRoom extends Component {
                     </div>
                   </div>
                   <div class="row">
-                  {this.state.products.map((products) => (
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                      <div class="product__item">
-                        <div
-                          class="product__item__pic set-bg"
-                          data-setbg="assets/img/popular/popular-1.jpg"
-                        >
-                          <img
+                    {this.state.products.map((products) => (
+                      <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product__item">
+                          <div
+                            class="product__item__pic set-bg"
+                            data-setbg="assets/img/popular/popular-1.jpg"
+                          >
+                            <img
                               src={"assets/img/hero/" + products.image}
                               alt="no logo"
                               height="324px"
                               width="230px"
                             />
-                         <div className="ep">Size Room: {products.size}</div>
+                            <div className="ep">Size Room: {products.size}</div>
                             <Button color="danger" className="btn_addtocart">
                               Đặt Phòng
                             </Button>
-                        </div>
+                          </div>
 
-                        <div class="product__item__text">
-                          <ul>
-                            <li>Hot Booking</li>
-                            <li>Sale</li>
-                          </ul>
-                          <h5>
-                            <a>Phòng Đập Phá 1</a>
-                          </h5>
+                          <div class="product__item__text">
+                            <ul>
+                              <li>Hot Booking</li>
+                              <li>Sale</li>
+                            </ul>
+                            <h5>
+                              <a>Phòng Đập Phá 1</a>
+                            </h5>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}               
+                    ))}
                   </div>
                 </div>
-                <PageCount />
+                <Pagination />
               </div>
-
 
               <div class="col-lg-4 col-md-6 col-sm-8">
                 <div class="product__sidebar">
@@ -120,14 +119,13 @@ class DartRoom extends Component {
                       <li data-filter=".years">Years</li>
                     </ul>
 
-
                     <div class="filter__gallery">
-                    {this.state.products.map((products) => (
-                      <div
-                        class="product__sidebar__view__item set-bg mix day years"
-                        data-setbg="img/sidebar/tv-1.jpg"
-                      >
-                       <img
+                      {this.state.products.map((products) => (
+                        <div
+                          class="product__sidebar__view__item set-bg mix day years"
+                          data-setbg="img/sidebar/tv-1.jpg"
+                        >
+                          <img
                             src={"assets/img/hero/" + products.image}
                             alt=""
                             width="350px"
@@ -139,41 +137,40 @@ class DartRoom extends Component {
                               {products.name}
                             </Link>
                           </h5>
-                      </div>
-                    ))}
+                        </div>
+                      ))}
                     </div>
                   </div>
-
 
                   <div class="product__sidebar__comment">
                     <div class="section-title">
                       <h5>New Comment</h5>
                     </div>
                     {this.state.products.map((products) => (
-                    <div class="product__sidebar__comment__item">
-                      <div class="product__sidebar__comment__item__pic">
-                      <img
+                      <div class="product__sidebar__comment__item">
+                        <div class="product__sidebar__comment__item__pic">
+                          <img
                             src={"assets/img/hero/" + products.image}
                             alt=""
                             width="90px"
                             height="130px"
                           />
-                      </div>
-                      <div class="product__sidebar__comment__item__text">
-                      <ul>
+                        </div>
+                        <div class="product__sidebar__comment__item__text">
+                          <ul>
                             <li>Sale</li>
                             <li>Booking</li>
                           </ul>
-                        <h5>
+                          <h5>
                             <Link style={{ color: "white" }}>
                               {products.name}
                             </Link>
                           </h5>
-                        <span>
-                          <i class="fa fa-eye"></i> 19.141 Viewes
-                        </span>
+                          <span>
+                            <i class="fa fa-eye"></i> 19.141 Viewes
+                          </span>
+                        </div>
                       </div>
-                    </div>
                     ))}
                   </div>
                 </div>

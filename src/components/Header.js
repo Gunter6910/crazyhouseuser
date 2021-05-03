@@ -29,7 +29,7 @@ class Header extends Component {
                         <Link to="/">Trang Chủ</Link>
                       </li>
                       <li>
-                        <Link to="/">Booking Room</Link>
+                        <Link to="/">Loại Phòng</Link>
                         <ul className="dropdown">
                           <li>
                             <Link to="/roombig">Phòng Đập Phá Lớn</Link>
@@ -52,13 +52,13 @@ class Header extends Component {
                         </ul>
                       </li>
                       <li>
-                        <Link to="/lienhe">Liên Hệ</Link>
-                      </li>
-                      <li>
-                        <Link to="/bookingroom">Booking Detail</Link>
+                        <Link to="/bookingroom">Đặt Phòng</Link>
                       </li>
                       <li>
                         <a href="./blog.html">Giới Thiệu</a>
+                      </li>
+                      <li>
+                        <a href="./lichsu">Lịch Sử Đặt</a>
                       </li>
                     </ul>
                   </nav>

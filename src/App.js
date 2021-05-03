@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Home from "./pages/Home";
 import Login from "../src/pages/Login";
 import RoomBig from "../src/pages/typeroom/RoomBig";
@@ -11,6 +11,7 @@ import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Find from "../src/components/Find";
 import LienHe from "../src/pages/LienHe";
+import LichSu from "../src/components/LichSuDat";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/lienhe" component={LienHe} />
           <Route path="/find" component={Find} />
           <Route path="/bookingroom" component={BookingRoom} />
-          
+          <Route path="/lichsu" component={LichSu} />
         </Switch>
         <Footer />
       </Router>

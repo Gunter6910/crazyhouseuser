@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import axios from "axios";
-import PageCount from '../../components/PageCount';
+import Pagination from '../../components/Pagination';
 class RoomSmall extends Component {
   state = {
     products: [],
@@ -101,7 +101,7 @@ class RoomSmall extends Component {
                   ))}               
                   </div>
                 </div>
-                <PageCount />
+                <Pagination />
               </div>
 
 
