@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import axios from "axios";
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +11,17 @@ class Login extends Component {
       password: "",
       fullName: "",
       loginErrors: "",
+      registry: {
+        email: "",
+        password: "",
+        rePassword: "",
+        firstName: "",
+        lastName: ""
+      }
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRegistrySubmit=this.handleRegistrySubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handlePass = this.handlePass.bind(this);
   }
@@ -25,11 +34,11 @@ class Login extends Component {
   };
   handleSubmit(event) {
     const { email, password } = this.state;
-
+   
     axios
       .post(
         "http://localhost:8080/api/login",
-        {
+        { 
           email: email,
           password: password,
         },
@@ -48,6 +57,51 @@ class Login extends Component {
         if (response.data) {
           window.location.href = "http://localhost:3000";
         }
+      })
+      .catch((error) => {
+        console.log("login error", error);
+      });
+    event.preventDefault();
+  }
+
+  handleRegistrySubmit(event) {
+    const { email, password, rePassword, firstName, lastName } = this.state.registry;
+   if (password !== rePassword) {
+     //show error messaged
+     return
+   }
+    
+    axios
+      .post(
+        "http://localhost:8080/api/user/create",
+        { 
+          email: email,
+          password: password,
+          role: {
+            id: 1
+          },
+          info: {
+            firstName: firstName,
+            lastName: lastName
+          }
+      
+      },
+        {
+          headers: {
+            accept: "*/*",
+            "content-type": "application/json",
+          },
+        },
+        { withCredentials: true }
+      )
+      .then((response) => {
+        
+        localStorage.setItem('fullName', response.data.fullName);
+        localStorage.setItem('accessToken', response.data.accessToken);
+        if (response.data) {
+          window.location.href = "http://localhost:3000"
+        }
+        
       })
       .catch((error) => {
         console.log("login error", error);
@@ -78,7 +132,6 @@ class Login extends Component {
           </div>
         </section>
         {/* <!-- Normal Breadcrumb End --> */}
-
         {/* <!-- Login Section Begin --> */}
         <section className="login spad">
           <div className="container">
@@ -87,6 +140,7 @@ class Login extends Component {
                 <div className="login__form">
                   <h3>Đăng Nhập</h3>
                   <form onSubmit={this.handleSubmit}>
+                 
                     <div className="input__item">
                       <input
                         type="email"
@@ -106,7 +160,10 @@ class Login extends Component {
                       />
                       <span className="icon_lock"></span>
                     </div>
-                    <button type="submit" className="site-btn">
+                    <button
+                      type="submit"
+                      className="site-btn"
+                    >
                       Đăng Nhập Ngay
                     </button>
                   </form>
@@ -116,11 +173,62 @@ class Login extends Component {
                 </div>
               </div>
               <div className="col-lg-6">
-                <div className="login__register">
+                <div className="login__form">
                   <h3>Bạn Chưa Có Tài Khoản?</h3>
-                  <a href="#" className="primary-btn">
-                    Hãy Đăng Kí Ngay!!!
-                  </a>
+                  <form onSubmit={this.handleRegistrySubmit}>
+                    <div className="input__item">
+                    
+                      <input
+                        type="first name"
+                        placeholder="Fist Name"
+                        value = {this.state.registry.firstName}
+                        onChange={(event) => this.setState({registry: {...this.state.registry , firstName: event.target.value} })}
+                       required/>
+                    </div>
+                  <div className="input__item">
+                      <input
+                        type="lastname"
+                        placeholder="Last Name"
+                        value = {this.state.registry.lastName}
+                        onChange={(event) => this.setState({registry: {...this.state.registry , lastName: event.target.value} })}
+                       required/>
+                    </div>
+                     <div className="input__item">
+                      <input
+                        type="email"
+                        placeholder="Email "
+                        value = {this.state.registry.email}
+                        onChange={(event) => this.setState({registry: {...this.state.registry , email: event.target.value} })}
+                       required/>
+                    </div>
+                    <div className="input__item">
+                      <input
+                        type="password"
+                        placeholder="Mật Khẩu"
+                        value = {this.state.registry.password}
+                        onChange={(event) => this.setState({registry: {...this.state.registry , password: event.target.value} })}
+                      />
+                    </div>
+                    <div className="input__item">
+                    <input
+                        type="password"
+                        placeholder="Nhập lại Mật Khẩu"
+                        value = {this.state.registry.rePassword}
+                        onChange={(event) => this.setState({registry: {...this.state.registry , rePassword: event.target.value} })}
+                      />
+                      <span className="icon_lock"></span>
+                    </div>
+                    <button
+                      type="submit"
+                      className="site-btn"
+                    
+                    >
+                      Đăng Kí
+                    </button>
+                  </form>
+                  {/* <a href="#" className="primary-btn">
+                    Đăng Kí !!!
+                  </a> */}
                 </div>
               </div>
             </div>
