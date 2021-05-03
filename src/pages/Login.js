@@ -163,7 +163,6 @@ class Login extends Component {
                     <button
                       type="submit"
                       className="site-btn"
-                    
                     >
                       Đăng Nhập Ngay
                     </button>
@@ -174,11 +173,11 @@ class Login extends Component {
                 </div>
               </div>
               <div className="col-lg-6">
-                <div className="login__register">
+                <div className="login__form">
                   <h3>Bạn Chưa Có Tài Khoản?</h3>
                   <form onSubmit={this.handleRegistrySubmit}>
                     <div className="input__item">
-                    <div className="input__item">
+                    
                       <input
                         type="first name"
                         placeholder="Fist Name"
@@ -194,6 +193,7 @@ class Login extends Component {
                         onChange={(event) => this.setState({registry: {...this.state.registry , lastName: event.target.value} })}
                        required/>
                     </div>
+                     <div className="input__item">
                       <input
                         type="email"
                         placeholder="Email "
@@ -223,7 +223,7 @@ class Login extends Component {
                       className="site-btn"
                     
                     >
-                      SingIn
+                      Đăng Kí
                     </button>
                   </form>
                   {/* <a href="#" className="primary-btn">
