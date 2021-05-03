@@ -95,7 +95,9 @@ class Login extends Component {
         { withCredentials: true }
       )
       .then((response) => {
-        
+        const registry = response.date;
+        this.setState({registry})
+        console.log(registry);
         localStorage.setItem('fullName', response.data.fullName);
         localStorage.setItem('accessToken', response.data.accessToken);
         if (response.data) {

@@ -12,6 +12,7 @@ import Footer from "../src/components/Footer";
 import Find from "../src/components/Find";
 import LienHe from "../src/pages/LienHe";
 import LichSu from "../src/components/LichSuDat";
+import EditPass from "../src/pages/EditPass";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/find" component={Find} />
           <Route path="/bookingroom" component={BookingRoom} />
           <Route path="/lichsu" component={LichSu} />
+          <Route path="/changepass" component={EditPass} />
         </Switch>
         <Footer />
       </Router>
